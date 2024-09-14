@@ -2,6 +2,7 @@
 #define APPLICATION_H_
 
 #include "FrameRateHandler.h"
+#include "console.h"
 #include "SingletonTemplate.h"
 
 class Application
@@ -23,6 +24,7 @@ private:
 	void Update();
 
 	FrameRateHandler *fpsHandler;
+	Console* consoleHandler;
 };
 
 #endif // !APPLICATON_H_

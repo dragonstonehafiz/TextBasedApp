@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="base\Application.cpp" />
+    <ClCompile Include="base\Console.cpp" />
     <ClCompile Include="base\FrameRateHandler.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\Application.h" />
+    <ClInclude Include="base\Console.h" />
     <ClInclude Include="base\FrameRateHandler.h" />
     <ClInclude Include="base\SingletonTemplate.h" />
   </ItemGroup>

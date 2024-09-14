@@ -11,14 +11,16 @@ public:
 	~Console();
 
 	void clearScreen();
-	void write(std::string str, COORD c);
-	void write(std::string str, int x, int y);
+	void write(std::string str, COORD c, int color = 0x07);
+	void write(std::string str, int x, int y, int color = 0x07);
 	
 	int getWidth() const;
 	int getHeight() const;
 private:
+
 	void setConsoleSize();
 	void disableResize();
+	void setColor(int color);
 	void moveTo(int x, int y);
 	void toggleCursor();
 

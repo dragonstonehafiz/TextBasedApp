@@ -21,13 +21,13 @@ void Console::clearScreen()
 	moveTo(0, 0);
 	std::cout << clearString;
 }
-void Console::write(std::string str, COORD c)
+void Console::write(std::string str, COORD c, int color)
 {
-	moveTo(c.X, c.Y);
-	std::cout << str;
+	write(str, c.X, c.Y, color);
 }
-void Console::write(std::string str, int x, int y)
+void Console::write(std::string str, int x, int y, int color)
 {
+	setColor(color);
 	moveTo(x, y);
 	std::cout << str;
 }
@@ -61,6 +61,10 @@ void Console::disableResize()
 	LONG style = GetWindowLong(consoleWindow, GWL_STYLE);
 	style &= ~WS_SIZEBOX;  // Disable the size box (resize border)
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
+}
+void Console::setColor(int color)
+{
+	SetConsoleTextAttribute(hConsole, color);
 }
 void Console::moveTo(int x, int y)
 {

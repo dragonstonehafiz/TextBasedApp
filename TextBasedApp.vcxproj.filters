@@ -30,6 +30,9 @@
     <ClCompile Include="base\Console.cpp">
       <Filter>base</Filter>
     </ClCompile>
+    <ClCompile Include="base\KeyboardHandler.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\Application.h">
@@ -42,6 +45,9 @@
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="base\Console.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\KeyboardHandler.h">
       <Filter>base</Filter>
     </ClInclude>
   </ItemGroup>

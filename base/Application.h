@@ -2,7 +2,8 @@
 #define APPLICATION_H_
 
 #include "FrameRateHandler.h"
-#include "console.h"
+#include "Console.h"
+#include "KeyboardHandler.h"
 #include "SingletonTemplate.h"
 
 class Application
@@ -14,7 +15,9 @@ public:
 	void mainloop();
 
 	double getDeltaTime();
-	FrameRateHandler * getFPSHandler();
+	FrameRateHandler* getFPSHandler();
+	Console* getConsoleHandler();
+	KeyboardHandler* getKeyboardHandler();
 private:
 	Application();
 	~Application();
@@ -25,6 +28,7 @@ private:
 
 	FrameRateHandler *fpsHandler;
 	Console* consoleHandler;
+	KeyboardHandler* keyboardHandler;
 };
 
 #endif // !APPLICATON_H_

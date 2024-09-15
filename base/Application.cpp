@@ -3,8 +3,11 @@
 #include <sstream>
 #include <iomanip>
 #include <string>
+#include "..//helper/CSV_Reader.h"
 
+CSV_Reader csv = CSV_Reader::readfile("data/paths.csv");
 int x = 1;
+
 
 Application::Application() :
 	fpsHandler(nullptr),
@@ -49,9 +52,13 @@ void Application::Update()
 	std::ostringstream ss;
 	ss << std::fixed << std::setprecision(2) << fpsHandler->getTrueFrameRate() << "fps";
 	consoleHandler->write(ss.str(), 5, 0, 0x1E);
+
+
 	ss.str("");
 	ss << x++;
 	consoleHandler->write(ss.str(), 5, 1);
+
+
 	ss.str("");
 	if (mouseHandler->isMouseDown(MOUSE_LEFT))
 		ss << "left mouse down";
@@ -61,6 +68,11 @@ void Application::Update()
 	ss.str("");
 	ss << mouseHandler->getMousePosX() << ":" << mouseHandler->getMousePosY();
 	consoleHandler->write(ss.str(), 5, 3, 0x2E);
+
+	ss.str("");
+	ss << csv.getcolnames();
+	consoleHandler->write(ss.str(), 5, 4, 0xF0);
+
 	for (int i = 0; i < consoleHandler->getHeight(); ++i)
 	{
 		COORD c = { 0, i };
@@ -95,4 +107,8 @@ Console* Application::getConsoleHandler()
 KeyboardHandler* Application::getKeyboardHandler()
 {
 	return keyboardHandler;
+}
+MouseHandler* Application::getMouseHandler()
+{
+	return mouseHandler;
 }

@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 
+#include "StringHelper.h"
+
 CSV_Reader::CSV_Reader()
 {
 
@@ -17,7 +19,7 @@ std::string CSV_Reader::getcolnames() const
 {
 	std::string output;
 	for (auto colname : colnames)
-		output = output + " " + colname;
+		output = output + "," + colname;
 	return output;
 }
 std::string *CSV_Reader::get(int index, const std::string& col)
@@ -92,17 +94,4 @@ CSV_Reader CSV_Reader::readfile(const std::string& filepath)
 	csv.rows = rows;
 
 	return csv;
-}
-
-std::vector<std::string> split(const std::string& str, char delimiter) 
-{
-	std::vector<std::string> tokens;
-	std::stringstream ss(str);  // Create string stream from the string
-	std::string token;
-
-	// Use std::getline to split the string using the delimiter
-	while (std::getline(ss, token, delimiter)) 
-		tokens.push_back(token);  // Add each token to the vector
-
-	return tokens;
 }

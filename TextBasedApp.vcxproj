@@ -133,6 +133,7 @@
     <ClCompile Include="base\KeyboardHandler.cpp" />
     <ClCompile Include="base\MouseHandler.cpp" />
     <ClCompile Include="helper\CSV_Reader.cpp" />
+    <ClCompile Include="helper\StringHelper.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +144,7 @@
     <ClInclude Include="base\MouseHandler.h" />
     <ClInclude Include="base\SingletonTemplate.h" />
     <ClInclude Include="helper\CSV_Reader.h" />
+    <ClInclude Include="helper\StringHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -48,6 +48,9 @@
     <ClCompile Include="helper\CSV_Reader.cpp">
       <Filter>Helper</Filter>
     </ClCompile>
+    <ClCompile Include="helper\StringHelper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\Application.h">
@@ -69,6 +72,9 @@
       <Filter>base\Systems</Filter>
     </ClInclude>
     <ClInclude Include="helper\CSV_Reader.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\StringHelper.h">
       <Filter>Helper</Filter>
     </ClInclude>
   </ItemGroup>

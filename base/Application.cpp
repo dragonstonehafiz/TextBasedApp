@@ -3,7 +3,9 @@
 #include <sstream>
 #include <iomanip>
 #include <string>
+
 #include "..//helper/CSV_Reader.h"
+#include "../helper/StringHelper.h"
 
 CSV_Reader csv = CSV_Reader::readfile("data/paths.csv");
 int x = 1;
@@ -76,7 +78,7 @@ void Application::Update()
 	for (int i = 0; i < consoleHandler->getHeight(); ++i)
 	{
 		COORD c = { 0, i };
-		std::string toPrint = std::to_string(i);
+		std::string toPrint = format("%02d", i);
 		consoleHandler->write(toPrint, c);
 	}
 }

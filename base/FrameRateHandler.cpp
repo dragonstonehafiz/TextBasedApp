@@ -23,12 +23,12 @@ void FrameRateHandler::endOfFrame()
 	// This code makes sure the program meets the set frame rate
 	// basically, it checks how much time has passed for the current frame and compares it to the target frame time
 	// if the time passed is less than the target frame time, 
-	// we have to make the program stop for however long it needs to make sure it meets the frame time.
+	// we have to make the program stop for however long it needs to make sure it meets the frame time
 	double elapsedTime = frameEndTime - frameStartTime;
 	if (elapsedTime < targetFrameTime)
 		Sleep(targetFrameTime - elapsedTime);
 
-	// We set this variable so we can get the true frame rate if we want to
+	// this code just makes sure that delta time is accurately tracked
 	deltaTime = elapsedTime > targetFrameTime ? elapsedTime : targetFrameTime;
 }
 

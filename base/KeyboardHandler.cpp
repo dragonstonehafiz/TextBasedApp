@@ -44,19 +44,27 @@ void KeyboardHandler::postFrameUpdate()
 
 bool KeyboardHandler::isKeyDown(unsigned char key)
 {
+	if (key >= MAX_KEYS)
+		return false;
 	return currState[key];
 }
 bool KeyboardHandler::isKeyUp(unsigned char key)
 {
+	if (key >= MAX_KEYS)
+		return false;
 	return !currState[key];
 }
 bool KeyboardHandler::isKeyPressed(unsigned char key)
 {
+	if (key >= MAX_KEYS)
+		return false;
 	// if key was up in the previous frame but is down now
 	return !prevState[key] && currState[key];
 }
 bool KeyboardHandler::isKeyReleased(unsigned char key)
 {
+	if (key >= MAX_KEYS)
+		return false;
 	// if the key was up in the previous frame but is down now
 	return prevState[key] && !currState[key];
 }

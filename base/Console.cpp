@@ -62,6 +62,16 @@ void Console::disableResize()
 	style &= ~WS_SIZEBOX;  // Disable the size box (resize border)
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
+void Console::disableQuickEdit()
+{
+	// Get the current input mode
+	DWORD prev_mode;
+	GetConsoleMode(hConsole, &prev_mode);
+
+	// Disable Quick Edit Mode by turning off the ENABLE_QUICK_EDIT_MODE bit
+	DWORD new_mode = prev_mode & ~ENABLE_QUICK_EDIT_MODE;
+	SetConsoleMode(hConsole, new_mode);
+}
 void Console::setColor(int color)
 {
 	SetConsoleTextAttribute(hConsole, color);

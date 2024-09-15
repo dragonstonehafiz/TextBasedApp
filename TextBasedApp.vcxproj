@@ -131,6 +131,7 @@
     <ClCompile Include="base\Console.cpp" />
     <ClCompile Include="base\FrameRateHandler.cpp" />
     <ClCompile Include="base\KeyboardHandler.cpp" />
+    <ClCompile Include="base\MouseHandler.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="base\Console.h" />
     <ClInclude Include="base\FrameRateHandler.h" />
     <ClInclude Include="base\KeyboardHandler.h" />
+    <ClInclude Include="base\MouseHandler.h" />
     <ClInclude Include="base\SingletonTemplate.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

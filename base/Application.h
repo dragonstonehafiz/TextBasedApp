@@ -4,6 +4,7 @@
 #include "FrameRateHandler.h"
 #include "Console.h"
 #include "KeyboardHandler.h"
+#include "MouseHandler.h"
 #include "SingletonTemplate.h"
 
 class Application
@@ -18,6 +19,7 @@ public:
 	FrameRateHandler* getFPSHandler();
 	Console* getConsoleHandler();
 	KeyboardHandler* getKeyboardHandler();
+	MouseHandler* getMouseHandler();
 private:
 	Application();
 	~Application();
@@ -29,6 +31,7 @@ private:
 	FrameRateHandler *fpsHandler;
 	Console* consoleHandler;
 	KeyboardHandler* keyboardHandler;
+	MouseHandler* mouseHandler;
 };
 
 #endif // !APPLICATON_H_

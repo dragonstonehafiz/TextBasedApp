@@ -16,6 +16,12 @@
     <Filter Include="base">
       <UniqueIdentifier>{fe5400d7-8347-4ef1-a084-053ebda0387c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="base\Input Output">
+      <UniqueIdentifier>{1af52051-440a-44ba-b928-473f7774aee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base\Systems">
+      <UniqueIdentifier>{2d0dbfff-fcb4-48cd-b516-694b2ed1195e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,31 +30,37 @@
     <ClCompile Include="base\Application.cpp">
       <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="base\FrameRateHandler.cpp">
-      <Filter>base</Filter>
+    <ClCompile Include="base\KeyboardHandler.cpp">
+      <Filter>base\Input Output</Filter>
+    </ClCompile>
+    <ClCompile Include="base\MouseHandler.cpp">
+      <Filter>base\Input Output</Filter>
     </ClCompile>
     <ClCompile Include="base\Console.cpp">
-      <Filter>base</Filter>
+      <Filter>base\Input Output</Filter>
     </ClCompile>
-    <ClCompile Include="base\KeyboardHandler.cpp">
-      <Filter>base</Filter>
+    <ClCompile Include="base\FrameRateHandler.cpp">
+      <Filter>base\Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\Application.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="base\FrameRateHandler.h">
-      <Filter>base</Filter>
-    </ClInclude>
     <ClInclude Include="base\SingletonTemplate.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="base\Console.h">
-      <Filter>base</Filter>
+    <ClInclude Include="base\MouseHandler.h">
+      <Filter>base\Input Output</Filter>
     </ClInclude>
     <ClInclude Include="base\KeyboardHandler.h">
-      <Filter>base</Filter>
+      <Filter>base\Input Output</Filter>
+    </ClInclude>
+    <ClInclude Include="base\Console.h">
+      <Filter>base\Input Output</Filter>
+    </ClInclude>
+    <ClInclude Include="base\FrameRateHandler.h">
+      <Filter>base\Systems</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

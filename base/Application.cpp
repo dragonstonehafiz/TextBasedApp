@@ -5,12 +5,12 @@
 #include <string>
 
 int x = 1;
-int y = 1;
 
 Application::Application() :
 	fpsHandler(nullptr),
 	consoleHandler(nullptr),
-	keyboardHandler(nullptr)
+	keyboardHandler(nullptr),
+	mouseHandler(nullptr)
 {
 }
 Application::~Application()
@@ -18,6 +18,7 @@ Application::~Application()
 	delete fpsHandler;
 	delete consoleHandler;
 	delete keyboardHandler;
+	delete mouseHandler;
 }
 
 void Application::init()
@@ -25,16 +26,20 @@ void Application::init()
 	fpsHandler = new FrameRateHandler(59.94);
 	consoleHandler = new Console(100, 30);
 	keyboardHandler = new KeyboardHandler();
+	mouseHandler = new MouseHandler();
 }
 void Application::PreFrameUpdate()
 {
 	consoleHandler->clearScreen();
 	fpsHandler->startOfFrame();
 	keyboardHandler->preFrameUpdate();
+	mouseHandler->preFrameUpdate();
 }
 void Application::PostFrameUpdate()
 {
 	fpsHandler->endOfFrame();
+	keyboardHandler->postFrameUpdate();
+	mouseHandler->postFrameUpdate();
 }
 void Application::Update()
 {
@@ -45,9 +50,10 @@ void Application::Update()
 	ss << x++;
 	consoleHandler->write(ss.str(), 5, 1);
 	ss.str("");
-	ss << y;
-	if (keyboardHandler->isKeyDown('A'))
-		y++;
+	if (mouseHandler->isMouseDown(MOUSE_LEFT))
+		ss << "left mouse down";
+	else
+		ss << "left mouse up";
 	consoleHandler->write(ss.str(), 5, 2, 0x2E);
 	for (int i = 0; i < consoleHandler->getHeight(); ++i)
 	{

@@ -3,7 +3,8 @@
 
 Console::Console(short width, short height) :
 	bufferSize{width, height},
-	hConsole(GetStdHandle(STD_OUTPUT_HANDLE))
+	hConsole(GetStdHandle(STD_OUTPUT_HANDLE)),
+	hWindow(GetConsoleWindow())
 {
 	disableResize();
 	setConsoleSize();
@@ -21,6 +22,20 @@ void Console::clearScreen()
 	moveTo(0, 0);
 	std::cout << clearString;
 }
+void Console::preFrameUpdate()
+{
+	clearScreen();
+
+	RECT consoleRect;
+	GetWindowRect(hWindow, &consoleRect);
+	windowPos.x = consoleRect.left;
+	windowPos.y = consoleRect.top;
+}
+void Console::postFrameUpdate()
+{
+
+}
+
 void Console::write(std::string str, COORD c, int color)
 {
 	write(str, c.X, c.Y, color);
@@ -39,6 +54,19 @@ int Console::getWidth() const
 int Console::getHeight() const
 {
 	return bufferSize.Y;
+}
+int Console::getPosX() const
+{
+	return windowPos.x;
+}
+int Console::getPosY() const
+{
+	return windowPos.y;
+}
+void Console::setConsoleTitle(std::string title)
+{
+	std::wstring stemp = std::wstring(title.begin(), title.end());
+	SetConsoleTitle(stemp.c_str());
 }
 
 void Console::setConsoleSize()

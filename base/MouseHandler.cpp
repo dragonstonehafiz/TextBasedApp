@@ -1,7 +1,9 @@
 #include "MouseHandler.h"
 
-MouseHandler::MouseHandler() :
-	mousePos{ 0, 0 }
+MouseHandler::MouseHandler(Console* _consoleHandler) :
+	trueMousePos{ 0, 0 },
+	relMousePos{ 0, 0 },
+	consoleHandler(_consoleHandler)
 {
 	for (int i = 0; i < MAX_MOUSE; ++i)
 	{
@@ -16,7 +18,7 @@ MouseHandler::~MouseHandler()
 
 void MouseHandler::preFrameUpdate()
 {
-	GetCursorPos(&mousePos);
+	calcRelativeMousePos();
 	prevState[MOUSE_LEFT] = currState[MOUSE_LEFT];
 	currState[MOUSE_LEFT] = GetAsyncKeyState(VK_LBUTTON) & 0x8000;
 	prevState[MOUSE_RIGHT] = currState[MOUSE_RIGHT];
@@ -30,15 +32,15 @@ void MouseHandler::postFrameUpdate()
 
 POINT MouseHandler::getMousePos() const
 {
-	return mousePos;
+	return relMousePos;
 }
 int MouseHandler::getMousePosX() const
 {
-	return mousePos.x;
+	return relMousePos.x;
 }
 int MouseHandler::getMousePosY() const
 {
-	return mousePos.y;
+	return relMousePos.y;
 }
 
 bool MouseHandler::isMouseDown(int mouse)
@@ -64,4 +66,11 @@ bool MouseHandler::isMouseReleased(int mouse)
 	if (mouse >= MAX_MOUSE)
 		return false;
 	return prevState[mouse] && !currState[mouse];
+}
+
+void MouseHandler::calcRelativeMousePos()
+{
+	GetCursorPos(&trueMousePos);
+	relMousePos.x = trueMousePos.x - consoleHandler->getPosX();
+	relMousePos.y = trueMousePos.y - consoleHandler->getPosY();
 }

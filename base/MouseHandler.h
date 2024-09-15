@@ -7,11 +7,12 @@
 #define MOUSE_MIDDLE 2
 
 #include <Windows.h>
+#include "Console.h"
 
 class MouseHandler
 {
 public:
-	MouseHandler();
+	MouseHandler(Console * _consoleHandler);
 	~MouseHandler();
 
 	void preFrameUpdate();
@@ -38,8 +39,11 @@ public:
 	/// </summary>	
 	bool isMouseReleased(int mouse);
 private:
+	void calcRelativeMousePos();
+
 	bool currState[MAX_MOUSE], prevState[MAX_MOUSE];
-	POINT mousePos;
+	POINT trueMousePos, relMousePos;
+	Console* consoleHandler;
 };
 
 #endif // !MOUSE_HANDLER_H_

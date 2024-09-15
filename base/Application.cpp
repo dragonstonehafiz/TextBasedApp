@@ -24,13 +24,16 @@ Application::~Application()
 void Application::init()
 {
 	fpsHandler = new FrameRateHandler(59.94);
+
 	consoleHandler = new Console(100, 30);
+	consoleHandler->setConsoleTitle("Text Based App");
+
 	keyboardHandler = new KeyboardHandler();
-	mouseHandler = new MouseHandler();
+	mouseHandler = new MouseHandler(consoleHandler);
 }
 void Application::PreFrameUpdate()
 {
-	consoleHandler->clearScreen();
+	consoleHandler->preFrameUpdate();
 	fpsHandler->startOfFrame();
 	keyboardHandler->preFrameUpdate();
 	mouseHandler->preFrameUpdate();
@@ -55,6 +58,9 @@ void Application::Update()
 	else
 		ss << "left mouse up";
 	consoleHandler->write(ss.str(), 5, 2, 0x2E);
+	ss.str("");
+	ss << mouseHandler->getMousePosX() << ":" << mouseHandler->getMousePosY();
+	consoleHandler->write(ss.str(), 5, 3, 0x2E);
 	for (int i = 0; i < consoleHandler->getHeight(); ++i)
 	{
 		COORD c = { 0, i };

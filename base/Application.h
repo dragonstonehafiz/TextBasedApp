@@ -5,6 +5,7 @@
 #include "Console.h"
 #include "KeyboardHandler.h"
 #include "MouseHandler.h"
+#include "SceneManager.h"
 #include "SingletonTemplate.h"
 
 class Application
@@ -14,12 +15,6 @@ class Application
 public:
 	void init();
 	void mainloop();
-
-	double getDeltaTime();
-	FrameRateHandler* getFPSHandler();
-	Console* getConsoleHandler();
-	KeyboardHandler* getKeyboardHandler();
-	MouseHandler* getMouseHandler();
 private:
 	Application();
 	~Application();
@@ -32,10 +27,7 @@ private:
 	Console* consoleHandler;
 	KeyboardHandler* keyboardHandler;
 	MouseHandler* mouseHandler;
+	SceneManager* sceneManager;
 };
 
 #endif // !APPLICATON_H_
-
-
-
-

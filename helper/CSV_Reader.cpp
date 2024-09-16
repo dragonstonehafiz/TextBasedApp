@@ -19,7 +19,9 @@ std::string CSV_Reader::getcolnames() const
 {
 	std::string output;
 	for (auto colname : colnames)
-		output = output + "," + colname;
+		output += colname + ',';
+	// Change the final character in the string to a string terminator
+	output[output.size() - 1] = '\0';
 	return output;
 }
 std::string *CSV_Reader::get(int index, const std::string& col)

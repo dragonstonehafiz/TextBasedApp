@@ -8,13 +8,13 @@
 
 #include <Windows.h>
 #include "Console.h"
+#include "SingletonTemplate.h"
 
 class MouseHandler
+	: public Singleton<MouseHandler>
 {
+	friend Singleton<MouseHandler>;
 public:
-	MouseHandler(Console * _consoleHandler);
-	~MouseHandler();
-
 	void preFrameUpdate();
 	void postFrameUpdate();
 
@@ -39,6 +39,9 @@ public:
 	/// </summary>	
 	bool isMouseReleased(int mouse);
 private:
+	MouseHandler();
+	~MouseHandler();
+
 	void calcRelativeMousePos();
 
 	bool currState[MAX_MOUSE], prevState[MAX_MOUSE];

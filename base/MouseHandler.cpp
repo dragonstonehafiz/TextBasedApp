@@ -1,9 +1,9 @@
 #include "MouseHandler.h"
 
-MouseHandler::MouseHandler(Console* _consoleHandler) :
+MouseHandler::MouseHandler() :
 	trueMousePos{ 0, 0 },
 	relMousePos{ 0, 0 },
-	consoleHandler(_consoleHandler)
+	consoleHandler(Console::getInstance())
 {
 	for (int i = 0; i < MAX_MOUSE; ++i)
 	{

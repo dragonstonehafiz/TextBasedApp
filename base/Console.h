@@ -3,13 +3,14 @@
 
 #include <Windows.h>
 #include <string>
+#include "SingletonTemplate.h"
 
 class Console
+	: public Singleton<Console>
 {
+	friend Singleton<Console>;
 public:
-	Console(short width, short height);
-	~Console();
-
+	void init(short width, short height);
 	void clearScreen();
 	void preFrameUpdate();
 	void postFrameUpdate();
@@ -23,6 +24,8 @@ public:
 	int getPosY() const;
 	void setConsoleTitle(std::string title);
 private:
+	Console();
+	~Console();
 
 	void setConsoleSize();
 	void disableResize();
@@ -34,9 +37,9 @@ private:
 	void moveTo(int x, int y);
 	void toggleCursor();
 
-	const COORD bufferSize;
-	const HANDLE hConsole;
-	const HWND hWindow;
+	COORD bufferSize;
+	HANDLE hConsole;
+	HWND hWindow;
 	POINT windowPos;
 };
 

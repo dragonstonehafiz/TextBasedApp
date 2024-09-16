@@ -1,8 +1,8 @@
 #include "FrameRateHandler.h"
 #include <Windows.h>
 
-FrameRateHandler::FrameRateHandler(double targetFrameRate) :
-	targetFrameRate(targetFrameRate), targetFrameTime(1000 / targetFrameRate),
+FrameRateHandler::FrameRateHandler() :
+	targetFrameRate(59.94), targetFrameTime(1000 / targetFrameRate),
 	deltaTime(0),
 	frameEndTime(clock_t()), frameStartTime(clock_t())
 {
@@ -11,6 +11,12 @@ FrameRateHandler::FrameRateHandler(double targetFrameRate) :
 FrameRateHandler::~FrameRateHandler()
 {
 
+}
+
+void FrameRateHandler::setTargetFramerate(double targetFrameRate)
+{
+	this->targetFrameRate = targetFrameRate;
+	targetFrameTime = 1000 / targetFrameRate; 
 }
 void FrameRateHandler::startOfFrame()
 {

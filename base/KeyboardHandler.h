@@ -2,15 +2,15 @@
 #define KEYBOARD_HANDLER_H_
 
 #include <Windows.h>
+#include "SingletonTemplate.h"
 
 #define MAX_KEYS 256
 
 class KeyboardHandler
+	: public Singleton<KeyboardHandler>
 {
+	friend Singleton<KeyboardHandler>;
 public:
-	KeyboardHandler();
-	~KeyboardHandler();
-
 	void preFrameUpdate();
 	void postFrameUpdate();
 
@@ -21,6 +21,8 @@ public:
 	bool isAnyKeyPressed();
 	bool isAnyKeyDown();
 private:
+	KeyboardHandler();
+	~KeyboardHandler();
 
 	bool currState[MAX_KEYS], prevState[MAX_KEYS];
 	bool anyKeyDown;

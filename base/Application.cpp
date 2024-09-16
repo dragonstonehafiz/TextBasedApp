@@ -15,26 +15,27 @@ Application::Application() :
 	fpsHandler(nullptr),
 	consoleHandler(nullptr),
 	keyboardHandler(nullptr),
-	mouseHandler(nullptr)
+	mouseHandler(nullptr),
+	sceneManager(nullptr)
 {
 }
 Application::~Application()
-{ 
-	delete fpsHandler;
-	delete consoleHandler;
-	delete keyboardHandler;
-	delete mouseHandler;
+{
 }
 
 void Application::init()
 {
-	fpsHandler = new FrameRateHandler(59.94);
+	fpsHandler = FrameRateHandler::getInstance();
+	fpsHandler->setTargetFramerate(59.94);
 
-	consoleHandler = new Console(100, 30);
+	consoleHandler = Console::getInstance();
+	consoleHandler->init(128, 48);
 	consoleHandler->setConsoleTitle("Text Based App");
 
-	keyboardHandler = new KeyboardHandler();
-	mouseHandler = new MouseHandler(consoleHandler);
+	keyboardHandler = KeyboardHandler::getInstance();
+	mouseHandler = MouseHandler::getInstance();
+
+	sceneManager = SceneManager::getInstance();
 }
 void Application::PreFrameUpdate()
 {
@@ -92,25 +93,4 @@ void Application::mainloop()
 
 		PostFrameUpdate();
 	}
-}
-
-double Application::getDeltaTime()
-{
-	return fpsHandler->getDeltaTime();
-}
-FrameRateHandler* Application::getFPSHandler()
-{
-	return fpsHandler;
-}
-Console* Application::getConsoleHandler()
-{
-	return consoleHandler;
-}
-KeyboardHandler* Application::getKeyboardHandler()
-{
-	return keyboardHandler;
-}
-MouseHandler* Application::getMouseHandler()
-{
-	return mouseHandler;
 }

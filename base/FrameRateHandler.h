@@ -4,20 +4,23 @@
 #include <ctime>
 #include "SingletonTemplate.h"
 
-class FrameRateHandler
-{
-public:
-	FrameRateHandler(double targetFrameRate);
-	~FrameRateHandler();
 
+class FrameRateHandler
+	: public Singleton<FrameRateHandler>
+{
+	friend Singleton<FrameRateHandler>;
+public:
+	void setTargetFramerate(double targetFrameRate);
 	void startOfFrame();
 	void endOfFrame();
 	double getTrueFrameRate();
 	double getDeltaTime();
 private:
+	FrameRateHandler();
+	~FrameRateHandler();
 
-	const double targetFrameRate;
-	const double targetFrameTime;
+	double targetFrameRate;
+	double targetFrameTime;
 	double deltaTime;
 	clock_t frameStartTime;
 	clock_t frameEndTime;

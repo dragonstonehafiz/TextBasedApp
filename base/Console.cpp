@@ -1,20 +1,25 @@
 #include "Console.h"
 #include <iostream>
 
-Console::Console(short width, short height) :
-	bufferSize{width, height},
-	hConsole(GetStdHandle(STD_OUTPUT_HANDLE)),
-	hWindow(GetConsoleWindow())
+Console::Console()
 {
-	disableResize();
-	setConsoleSize();
-	toggleCursor();
+	init(128, 48);
 }
 Console::~Console()
 {
 
 }
 
+void Console::init(short width, short height)
+{
+	bufferSize = { width, height };
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	hWindow = GetConsoleWindow();
+
+	disableResize();
+	setConsoleSize();
+	toggleCursor();
+}
 void Console::clearScreen()
 {
 	int size = getHeight() * getWidth();

@@ -1,9 +1,9 @@
 #ifndef FRAME_RATE_HANDLER_H_
 #define FRAME_RATE_HANDLER_H_
 
-#include <ctime>
 #include "SingletonTemplate.h"
 #include <string>
+#include <chrono>
 
 class FrameRateHandler
 	: public Singleton<FrameRateHandler>
@@ -20,13 +20,25 @@ public:
 private:
 	FrameRateHandler();
 	~FrameRateHandler();
-	double getDeltaTime_ms() const;
 
+	/// <summary>
+	/// Frame rate we want.
+	/// </summary>
 	double targetFrameRate;
+	/// <summary>
+	/// How long a single frame should last (in milliseconds because sleep is alos in milliseconds)
+	/// </summary>
 	double targetFrameTime;
+	/// <summary>
+	/// The time between the start of this frame and the start of the frame before.
+	/// </summary>
 	double deltaTime;
-	clock_t frameStartTime;
-	clock_t frameEndTime;
+	/// <summary>
+	/// The time between the start of this frame and the end of this frame. This is used 
+	/// </summary>
+	double frameDuration;
+	std::chrono::time_point<std::chrono::high_resolution_clock> frameStartTime;
+	std::chrono::time_point<std::chrono::high_resolution_clock> frameEndTime;
 };
 
 

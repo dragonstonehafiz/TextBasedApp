@@ -3,37 +3,42 @@
 #include "../helper/StringHelper.h"
 
 FrameRateHandler::FrameRateHandler() :
-	targetFrameRate(59.94), targetFrameTime(1000 / targetFrameRate),
+	targetFrameRate(59.94), 
+	targetFrameTime(1000 / targetFrameRate),
 	deltaTime(0),
-	frameEndTime(clock_t()), frameStartTime(clock_t())
+	frameDuration(0)
 {
-	
+	frameStartTime = std::chrono::high_resolution_clock::now();
+	frameEndTime = std::chrono::high_resolution_clock::now();
 }
 FrameRateHandler::~FrameRateHandler()
 {
-
 }
 
 void FrameRateHandler::startOfFrame()
 {
-	frameStartTime = clock();
+	// delta time is the time between this frame and the previous frame,
+	// NOT the time between this frame and this frame's end. (i think)
+	auto prevFrameStartTime = frameStartTime;
+	frameStartTime = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> elapsedTime = frameStartTime - prevFrameStartTime;
+	deltaTime = elapsedTime.count();
 }
 void FrameRateHandler::endOfFrame()
 {
-	frameEndTime = clock();
+	frameEndTime = std::chrono::high_resolution_clock::now();
 
 	// This code makes sure the program meets the set frame rate
 	// basically, it checks how much time has passed for the current frame and compares it to the target frame time
 	// if the time passed is less than the target frame time, 
 	// we have to make the program stop for however long it needs to make sure it meets the frame time
-	double elapsedTime = frameEndTime - frameStartTime;
-	if (elapsedTime < targetFrameTime)
-		Sleep(targetFrameTime - elapsedTime);
+	std::chrono::duration<double, std::milli> frameTime = (frameEndTime - frameStartTime);
+	double frameTimeMS = frameTime.count();
+	if (frameTimeMS < targetFrameTime)
+		Sleep(targetFrameTime - frameTimeMS);
 
-	// this code just makes sure that delta time is accurately tracked
-	deltaTime = elapsedTime > targetFrameTime ? elapsedTime : targetFrameTime;
-	// Convert delta time to milliseconds for use externally
-	deltaTime /= 1000.f;
+	frameDuration = frameTimeMS > targetFrameTime ? frameTimeMS : targetFrameTime;
+	frameDuration /= 1000.f;
 }
 
 void FrameRateHandler::setTargetFramerate(double targetFrameRate)
@@ -43,11 +48,11 @@ void FrameRateHandler::setTargetFramerate(double targetFrameRate)
 }
 double FrameRateHandler::getTrueFrameRate() const
 {
-	return 1000 / deltaTime;
+	return 1.f / frameDuration;
 }
 std::string FrameRateHandler::getFPS_str() const
 {
-	std::string output = format("%.2f", (float)(1000.f / deltaTime));
+	std::string output = format("%.2f", (float)getTrueFrameRate());
 	output += "fps";
 	return output;
 }

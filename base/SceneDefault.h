@@ -18,6 +18,7 @@ public:
 private:
 	double totalElapsedTime;
 	int counter;
+	int seconds_passed;
 };
 
 #endif // !SCENE_DEFAULT_H_

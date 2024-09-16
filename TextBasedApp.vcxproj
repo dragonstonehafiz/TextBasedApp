@@ -132,6 +132,7 @@
     <ClCompile Include="base\FrameRateHandler.cpp" />
     <ClCompile Include="base\KeyboardHandler.cpp" />
     <ClCompile Include="base\MouseHandler.cpp" />
+    <ClCompile Include="base\SceneDefault.cpp" />
     <ClCompile Include="base\SceneManager.cpp" />
     <ClCompile Include="helper\CSV_Reader.cpp" />
     <ClCompile Include="helper\StringHelper.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="base\FrameRateHandler.h" />
     <ClInclude Include="base\KeyboardHandler.h" />
     <ClInclude Include="base\MouseHandler.h" />
+    <ClInclude Include="base\SceneDefault.h" />
     <ClInclude Include="base\SceneManager.h" />
     <ClInclude Include="base\SingletonTemplate.h" />
     <ClInclude Include="helper\CSV_Reader.h" />

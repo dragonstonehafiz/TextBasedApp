@@ -1,5 +1,6 @@
 #include "FrameRateHandler.h"
 #include <Windows.h>
+#include "../helper/StringHelper.h"
 
 FrameRateHandler::FrameRateHandler() :
 	targetFrameRate(59.94), targetFrameTime(1000 / targetFrameRate),
@@ -13,11 +14,6 @@ FrameRateHandler::~FrameRateHandler()
 
 }
 
-void FrameRateHandler::setTargetFramerate(double targetFrameRate)
-{
-	this->targetFrameRate = targetFrameRate;
-	targetFrameTime = 1000 / targetFrameRate; 
-}
 void FrameRateHandler::startOfFrame()
 {
 	frameStartTime = clock();
@@ -36,13 +32,26 @@ void FrameRateHandler::endOfFrame()
 
 	// this code just makes sure that delta time is accurately tracked
 	deltaTime = elapsedTime > targetFrameTime ? elapsedTime : targetFrameTime;
+	// Convert delta time to milliseconds for use externally
+	deltaTime /= 1000.f;
 }
 
-double FrameRateHandler::getTrueFrameRate()
+void FrameRateHandler::setTargetFramerate(double targetFrameRate)
+{
+	this->targetFrameRate = targetFrameRate;
+	targetFrameTime = 1000 / targetFrameRate;
+}
+double FrameRateHandler::getTrueFrameRate() const
 {
 	return 1000 / deltaTime;
 }
-double FrameRateHandler::getDeltaTime()
+std::string FrameRateHandler::getFPS_str() const
+{
+	std::string output = format("%.2f", (float)(1000.f / deltaTime));
+	output += "fps";
+	return output;
+}
+double FrameRateHandler::getDeltaTime() const
 {
 	return deltaTime;
 }

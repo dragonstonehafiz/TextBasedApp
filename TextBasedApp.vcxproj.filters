@@ -54,6 +54,9 @@
     <ClCompile Include="base\SceneManager.cpp">
       <Filter>base\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="base\SceneDefault.cpp">
+      <Filter>base\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\Application.h">
@@ -84,6 +87,9 @@
       <Filter>base\Systems</Filter>
     </ClInclude>
     <ClInclude Include="base\SceneManager.h">
+      <Filter>base\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="base\SceneDefault.h">
       <Filter>base\Systems</Filter>
     </ClInclude>
   </ItemGroup>

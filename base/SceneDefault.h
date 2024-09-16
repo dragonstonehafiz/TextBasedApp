@@ -10,11 +10,15 @@ public:
 	DefaultScene();
 	~DefaultScene();
 
-	void init();
 	void update(double dt);
 	void render();
+
+	void init();
+
 	void enter();
 	void exit();
+	void reenter();
+	void hibernate();
 private:
 	double totalElapsedTime;
 	int counter;

@@ -47,13 +47,20 @@ void DefaultScene::render()
 	toPrint = format("dt: %0.5f", (float)(fpsHandler->getDeltaTime()));
 	consoleHandler->write(toPrint, 1, 4);
 }
+
 void DefaultScene::enter()
 {
-	totalElapsedTime = 0;
-	counter = 0;
-	seconds_passed = 0;
+
 }
 void DefaultScene::exit()
+{
+
+}
+void DefaultScene::reenter()
+{
+
+}
+void DefaultScene::hibernate()
 {
 
 }

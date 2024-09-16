@@ -137,6 +137,7 @@
     <ClCompile Include="helper\CSV_Reader.cpp" />
     <ClCompile Include="helper\StringHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="project\SceneMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\Application.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="base\SingletonTemplate.h" />
     <ClInclude Include="helper\CSV_Reader.h" />
     <ClInclude Include="helper\StringHelper.h" />
+    <ClInclude Include="project\SceneMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

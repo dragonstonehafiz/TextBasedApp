@@ -70,8 +70,8 @@ void SceneManager::update(double dt)
 	// Make sure to exit the previous scene
 	if (currScene != nullptr)
 	{
-		currScene->update(dt);
-		currScene->render();
+		getCurrScene()->update(dt);
+		getCurrScene()->render();
 	}
 }
 void SceneManager::clearScenes()
@@ -100,7 +100,6 @@ bool SceneManager::changeScene(std::string sceneName)
 			currScene->exit();
 			sceneStack.pop_back();
 		}
-
 
 		nextScene->enter();
 		sceneStack.push_back(nextScene);

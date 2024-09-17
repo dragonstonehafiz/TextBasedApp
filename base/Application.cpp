@@ -9,6 +9,11 @@
 
 #include "SceneDefault.h"
 #include "../project/SceneMenu.h"
+#include "../project/SceneGame.h"
+#include "../project/SceneLevelSelect.h"
+#include "../project/SceneSettings.h"
+#include "../project/SceneStats.h"
+
 
 CSV_Reader csv = CSV_Reader::readfile("data/paths.csv");
 int x = 1;
@@ -41,6 +46,10 @@ void Application::init()
 
 	sceneManager = SceneManager::getInstance();
 	sceneManager->addScene(new SceneMenu(), "Menu");
+	sceneManager->addScene(new SceneGame(), "Game");
+	sceneManager->addScene(new SceneLevelSelect(), "Level Select");
+	sceneManager->addScene(new SceneSettings(), "Settings");
+	sceneManager->addScene(new SceneStats(), "Stats");
 	sceneManager->changeScene("Menu");
 }
 void Application::mainloop()

@@ -39,7 +39,7 @@ public:
 	/// Called when you are pushing this scene to the scene stack.
 	/// </summary>
 	virtual void hibernate() = 0;
-private:
+protected:
 };
 
 

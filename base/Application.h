@@ -15,6 +15,8 @@ class Application
 public:
 	void init();
 	void mainloop();
+
+	void quit();
 private:
 	Application();
 	~Application();
@@ -22,12 +24,16 @@ private:
 	void PreFrameUpdate();
 	void PostFrameUpdate();
 	void Update();
+	void RenderInfo();
 
 	FrameRateHandler *fpsHandler;
 	Console* consoleHandler;
 	KeyboardHandler* keyboardHandler;
 	MouseHandler* mouseHandler;
 	SceneManager* sceneManager;
+
+	bool isRunning;
+	double runTime;
 };
 
 #endif // !APPLICATON_H_

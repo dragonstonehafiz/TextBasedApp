@@ -23,5 +23,12 @@ std::string format(std::string string, float number);
 /// <returns></returns>
 std::string format(std::string string, int number);
 
+/// <summary>
+/// Takes a time in seconds and converts it to "XhrYminZs
+/// </summary>
+/// <param name="time">Time in seconds</param>
+/// <returns></returns>
+std::string getStringTime(int time);
+
 #endif // !STRING_HELPER_H_
 

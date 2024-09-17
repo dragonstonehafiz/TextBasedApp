@@ -137,7 +137,13 @@
     <ClCompile Include="helper\CSV_Reader.cpp" />
     <ClCompile Include="helper\StringHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="project\ObjectBase.cpp" />
+    <ClCompile Include="project\ObjectMenu.cpp" />
+    <ClCompile Include="project\SceneGame.cpp" />
+    <ClCompile Include="project\SceneLevelSelect.cpp" />
     <ClCompile Include="project\SceneMenu.cpp" />
+    <ClCompile Include="project\SceneSettings.cpp" />
+    <ClCompile Include="project\SceneStats.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\Application.h" />
@@ -151,7 +157,13 @@
     <ClInclude Include="base\SingletonTemplate.h" />
     <ClInclude Include="helper\CSV_Reader.h" />
     <ClInclude Include="helper\StringHelper.h" />
+    <ClInclude Include="project\ObjectBase.h" />
+    <ClInclude Include="project\ObjectMenu.h" />
+    <ClInclude Include="project\SceneGame.h" />
+    <ClInclude Include="project\SceneLevelSelect.h" />
     <ClInclude Include="project\SceneMenu.h" />
+    <ClInclude Include="project\SceneSettings.h" />
+    <ClInclude Include="project\SceneStats.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

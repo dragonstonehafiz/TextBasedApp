@@ -16,15 +16,18 @@ void Console::init(short width, short height)
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	hWindow = GetConsoleWindow();
 
+	setFont();
 	disableResize();
 	setConsoleSize();
 	toggleCursor();
+	defaultColor = 0x07;
 }
 void Console::clearScreen()
 {
 	int size = getHeight() * getWidth();
 	std::string clearString = std::string(size, ' ');
 	moveTo(0, 0);
+	setColor(defaultColor);
 	std::cout << clearString;
 }
 void Console::preFrameUpdate()
@@ -74,6 +77,21 @@ void Console::setConsoleTitle(std::string title)
 	SetConsoleTitle(stemp.c_str());
 }
 
+void Console::setFont()
+{
+	// Define the font information
+	CONSOLE_FONT_INFOEX cfi;
+	cfi.cbSize = sizeof(cfi);
+	cfi.nFont = 0;
+	cfi.dwFontSize.X = 0;  // Width of the font
+	cfi.dwFontSize.Y = 16; // Height of the font (can be changed)
+	cfi.FontFamily = FF_DONTCARE;
+	cfi.FontWeight = FW_NORMAL;
+
+	// Set the font to Consolas
+	wcscpy_s(cfi.FaceName, L"Consolas");
+	SetCurrentConsoleFontEx(hConsole, FALSE, &cfi);
+}
 void Console::setConsoleSize()
 {
 	// Set buffer size

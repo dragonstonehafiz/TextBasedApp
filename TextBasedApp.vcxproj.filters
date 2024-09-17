@@ -31,6 +31,9 @@
     <Filter Include="project\scenes">
       <UniqueIdentifier>{5c629103-76ce-4094-a78f-146c7488a20b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\object">
+      <UniqueIdentifier>{543c8239-fe6d-4bd2-bc77-30a2c57ac622}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +68,24 @@
     </ClCompile>
     <ClCompile Include="project\SceneMenu.cpp">
       <Filter>project\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="project\SceneSettings.cpp">
+      <Filter>project\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="project\SceneStats.cpp">
+      <Filter>project\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="project\SceneGame.cpp">
+      <Filter>project\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="project\SceneLevelSelect.cpp">
+      <Filter>project\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="project\ObjectMenu.cpp">
+      <Filter>project\object</Filter>
+    </ClCompile>
+    <ClCompile Include="project\ObjectBase.cpp">
+      <Filter>project\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +124,24 @@
     </ClInclude>
     <ClInclude Include="project\SceneMenu.h">
       <Filter>project\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="project\SceneSettings.h">
+      <Filter>project\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="project\SceneStats.h">
+      <Filter>project\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="project\SceneGame.h">
+      <Filter>project\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="project\SceneLevelSelect.h">
+      <Filter>project\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="project\ObjectMenu.h">
+      <Filter>project\object</Filter>
+    </ClInclude>
+    <ClInclude Include="project\ObjectBase.h">
+      <Filter>project\object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

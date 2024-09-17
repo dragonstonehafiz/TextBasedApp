@@ -21,6 +21,7 @@ bool SceneManager::addScene(BaseScene* toAdd, std::string sceneName)
 		return false;
 
 	sceneMap[sceneName] = toAdd;
+	return true;
 	
 }
 bool SceneManager::removeScene(std::string sceneName)
@@ -129,6 +130,9 @@ bool SceneManager::pushToStack(std::string sceneName)
 }
 bool SceneManager::popStack()
 {
+	if (sceneStack.size() <= 1)
+		return false;
+
 	BaseScene* currScene = getCurrScene();
 	// Make sure to exit the curr scene before going down the stack
 	if (currScene != nullptr)
@@ -139,5 +143,5 @@ bool SceneManager::popStack()
 	
 	// Reenter the previous scene in the stack.
 	sceneStack.back()->reenter();
-
+	return true;
 }

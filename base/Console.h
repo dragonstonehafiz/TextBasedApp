@@ -27,11 +27,9 @@ private:
 	Console();
 	~Console();
 
+	void setFont();
 	void setConsoleSize();
 	void disableResize();
-	/// <summary>
-	/// This function just makes it impossing for the user to click on the text in the terminal
-	/// </summary>
 	void disableQuickEdit();
 	void setColor(int color);
 	void moveTo(int x, int y);
@@ -41,6 +39,7 @@ private:
 	HANDLE hConsole;
 	HWND hWindow;
 	POINT windowPos;
+	int defaultColor;
 };
 
 #endif

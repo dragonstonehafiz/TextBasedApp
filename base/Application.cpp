@@ -8,17 +8,19 @@
 #include "../helper/StringHelper.h"
 
 #include "SceneDefault.h"
+#include "../project/SceneMenu.h"
 
 CSV_Reader csv = CSV_Reader::readfile("data/paths.csv");
 int x = 1;
 
-
 Application::Application() :
+	isRunning(true),
 	fpsHandler(nullptr),
 	consoleHandler(nullptr),
 	keyboardHandler(nullptr),
 	mouseHandler(nullptr),
-	sceneManager(nullptr)
+	sceneManager(nullptr),
+	runTime(0)
 {
 }
 Application::~Application()
@@ -38,9 +40,26 @@ void Application::init()
 	mouseHandler = MouseHandler::getInstance();
 
 	sceneManager = SceneManager::getInstance();
-	sceneManager->addScene(new DefaultScene(), "Default Scene");
-	sceneManager->changeScene("Default Scene");
+	sceneManager->addScene(new SceneMenu(), "Menu");
+	sceneManager->changeScene("Menu");
 }
+void Application::mainloop()
+{
+	while (isRunning)
+	{
+		PreFrameUpdate();
+
+		Update();
+
+		PostFrameUpdate();
+	}
+}
+
+void Application::quit()
+{
+	isRunning = false;
+}
+
 void Application::PreFrameUpdate()
 {
 	consoleHandler->preFrameUpdate();
@@ -56,16 +75,18 @@ void Application::PostFrameUpdate()
 }
 void Application::Update()
 {
+	runTime += fpsHandler->getDeltaTime();
 	sceneManager->update(fpsHandler->getDeltaTime());
+
+	RenderInfo();
 }
-void Application::mainloop()
+void Application::RenderInfo()
 {
-	while (true)
-	{
-		PreFrameUpdate();
+	// calculate run time
+	std::string toPrint = "Run Time: " + getStringTime((int)runTime);
+	consoleHandler->write(toPrint, { 0, 0 });
 
-		Update();
-
-		PostFrameUpdate();
-	}
+	// calculate fps
+	toPrint = fpsHandler->getFPS_str();
+	consoleHandler->write(toPrint, consoleHandler->getWidth() - toPrint.length(), 0);
 }

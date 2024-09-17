@@ -24,9 +24,9 @@ void SceneMenu::update(double dt)
 	SceneManager* sceneManager = SceneManager::getInstance();
 
 	// Move Key Up and Down
-	if (keyboardHandler->isKeyPressed(VK_UP))
+	if (keyboardHandler->isKeyPressed(VK_UP) || keyboardHandler->isKeyPressed('W'))
 		menu->goUp();
-	else if (keyboardHandler->isKeyPressed(VK_DOWN))
+	else if (keyboardHandler->isKeyPressed(VK_DOWN) || keyboardHandler->isKeyPressed('S'))
 		menu->goDown();
 
 	if (keyboardHandler->isKeyPressed(VK_RETURN))
@@ -67,6 +67,7 @@ void SceneMenu::enter()
 	menu->setOptions("Study,Settings,Stats,Quit");
 	menu->setPos(64, 13);
 	menu->setCentered(true);
+	menu->setSpaceBetweenOptions(2);
 	reenter();
 }
 void SceneMenu::exit()

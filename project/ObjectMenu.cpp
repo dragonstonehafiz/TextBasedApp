@@ -80,7 +80,7 @@ void ObjectMenu::render()
 		// Sets the y position of each option
 		int yPos = y + i * spaceBetweenOptions;
 		
-		console->write(ss.str(), xPos,yPos + i * spaceBetweenOptions, color);
+		console->write(ss.str(), xPos, yPos, color);
 	}
 }
 

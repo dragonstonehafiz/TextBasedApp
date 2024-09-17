@@ -36,13 +36,12 @@ public:
 	/// <param name="options">A string where each option is seperated by a string</param>
 	void setOptions(std::string _options);
 
-
 	void setSpaceBetweenOptions(int _spaceBetweenOptions);
 	void setCentered(bool _centered);
 
 	virtual void update(double dt);
 	virtual void render();
-private:
+protected:
 	int currOption;
 	std::vector<std::string> options;
 	int spaceBetweenOptions;

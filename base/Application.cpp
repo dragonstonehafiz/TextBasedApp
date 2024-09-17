@@ -62,6 +62,7 @@ void Application::mainloop()
 
 		PostFrameUpdate();
 	}
+	consoleHandler->clearScreen();
 }
 
 void Application::quit()

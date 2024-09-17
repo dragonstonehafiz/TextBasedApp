@@ -34,6 +34,9 @@
     <Filter Include="project\object">
       <UniqueIdentifier>{543c8239-fe6d-4bd2-bc77-30a2c57ac622}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\questions">
+      <UniqueIdentifier>{ed683b0d-04d3-4b67-82f9-3f2d57ff8d86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -85,6 +88,12 @@
       <Filter>project\object</Filter>
     </ClCompile>
     <ClCompile Include="project\ObjectBase.cpp">
+      <Filter>project\object</Filter>
+    </ClCompile>
+    <ClCompile Include="project\QuestionManager.cpp">
+      <Filter>project\questions</Filter>
+    </ClCompile>
+    <ClCompile Include="project\ObjectMenu_LevelSelect.cpp">
       <Filter>project\object</Filter>
     </ClCompile>
   </ItemGroup>
@@ -141,6 +150,15 @@
       <Filter>project\object</Filter>
     </ClInclude>
     <ClInclude Include="project\ObjectBase.h">
+      <Filter>project\object</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\ConfigFile.h">
+      <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="project\QuestionManager.h">
+      <Filter>project\questions</Filter>
+    </ClInclude>
+    <ClInclude Include="project\ObjectMenu_LevelSelect.h">
       <Filter>project\object</Filter>
     </ClInclude>
   </ItemGroup>

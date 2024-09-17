@@ -24,29 +24,25 @@ std::string CSV_Reader::getcolnames() const
 	output[output.size() - 1] = '\0';
 	return output;
 }
-std::string *CSV_Reader::get(int index, const std::string& col)
+std::string CSV_Reader::get(int index, const std::string& col)
 {
 	// Check if the provided index is in the row vector
 	if (index < 0 || index >= rows.size())
-		return nullptr;
+		return "index out of range";
 
 	// Checks if the provided key is in the map
 	if (rows[index].count(col) == 0)
-		return nullptr;
+		return col + " not found";
 	
-	return &rows[index][col];
-}
-std::map<std::string, std::string>* CSV_Reader::get(int index)
-{
-	// Check if the provided index is in the row vector
-	if (index < 0 || index >= rows.size())
-		return nullptr;
-
-	return &rows[index];
+	return rows[index][col];
 }
 bool CSV_Reader::isEmpty()
 {
 	return rows.size() == 0;
+}
+int CSV_Reader::size() const
+{
+	return rows.size();
 }
 
 CSV_Reader CSV_Reader::readfile(const std::string& filepath)

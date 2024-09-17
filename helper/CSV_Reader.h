@@ -11,9 +11,9 @@ public:
 	~CSV_Reader();
 
 	std::string getcolnames() const;
-	std::string *get(int index, const std::string& col);
-	std::map<std::string, std::string> *get(int index);
+	std::string get(int index, const std::string& col);
 	bool isEmpty();
+	int size() const;
 
 	static CSV_Reader readfile(const std::string& filepath);
 private:

@@ -1,6 +1,6 @@
 #include "FrameRateHandler.h"
 #include <Windows.h>
-#include "../helper/StringHelper.h"
+#include "StringHelper.h"
 
 FrameRateHandler::FrameRateHandler() :
 	targetFrameRate(59.94), 

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5cc039d6-ad60-4238-8712-6aa64e690981}</ProjectGuid>
-    <RootNamespace>TextBasedApp</RootNamespace>
+    <ProjectGuid>{66d0550a-035f-418f-a15f-d693b4588ae4}</ProjectGuid>
+    <RootNamespace>Main</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,11 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)Common\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -119,58 +120,27 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)Common\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="base\Application.cpp" />
-    <ClCompile Include="base\Console.cpp" />
-    <ClCompile Include="base\FrameRateHandler.cpp" />
-    <ClCompile Include="base\KeyboardHandler.cpp" />
-    <ClCompile Include="base\MouseHandler.cpp" />
-    <ClCompile Include="base\SceneDefault.cpp" />
-    <ClCompile Include="base\SceneManager.cpp" />
-    <ClCompile Include="helper\CSV_Reader.cpp" />
-    <ClCompile Include="helper\StringHelper.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="project\ObjectBase.cpp" />
-    <ClCompile Include="project\ObjectMenu.cpp" />
-    <ClCompile Include="project\ObjectMenu_LevelSelect.cpp" />
-    <ClCompile Include="project\QuestionManager.cpp" />
-    <ClCompile Include="project\SceneGame.cpp" />
-    <ClCompile Include="project\SceneLevelSelect.cpp" />
-    <ClCompile Include="project\SceneMenu.cpp" />
-    <ClCompile Include="project\SceneSettings.cpp" />
-    <ClCompile Include="project\SceneStats.cpp" />
+    <ClCompile Include="source\Application.cpp" />
+    <ClCompile Include="source\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="base\Application.h" />
-    <ClInclude Include="base\BaseScene.h" />
-    <ClInclude Include="base\Console.h" />
-    <ClInclude Include="base\FrameRateHandler.h" />
-    <ClInclude Include="base\KeyboardHandler.h" />
-    <ClInclude Include="base\MouseHandler.h" />
-    <ClInclude Include="base\SceneDefault.h" />
-    <ClInclude Include="base\SceneManager.h" />
-    <ClInclude Include="base\SingletonTemplate.h" />
-    <ClInclude Include="helper\ConfigFile.h" />
-    <ClInclude Include="helper\CSV_Reader.h" />
-    <ClInclude Include="helper\StringHelper.h" />
-    <ClInclude Include="project\ObjectBase.h" />
-    <ClInclude Include="project\ObjectMenu.h" />
-    <ClInclude Include="project\ObjectMenu_LevelSelect.h" />
-    <ClInclude Include="project\QuestionManager.h" />
-    <ClInclude Include="project\SceneGame.h" />
-    <ClInclude Include="project\SceneLevelSelect.h" />
-    <ClInclude Include="project\SceneMenu.h" />
-    <ClInclude Include="project\SceneSettings.h" />
-    <ClInclude Include="project\SceneStats.h" />
+    <ClInclude Include="source\Application.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\TextBasedApp.vcxproj">
+      <Project>{5cc039d6-ad60-4238-8712-6aa64e690981}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

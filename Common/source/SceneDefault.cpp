@@ -1,11 +1,12 @@
 #include "SceneDefault.h"
 #include "FrameRateHandler.h"
 #include "Console.h"
-#include "../helper/StringHelper.h"
+#include "StringHelper.h"
 #include "KeyboardHandler.h"
 
 DefaultScene::DefaultScene()
 {
+	enter();
 }
 DefaultScene::~DefaultScene()
 {
@@ -50,7 +51,9 @@ void DefaultScene::render()
 
 void DefaultScene::enter()
 {
-
+	seconds_passed = 0;
+	counter = 0;
+	totalElapsedTime = 0.f;
 }
 void DefaultScene::exit()
 {

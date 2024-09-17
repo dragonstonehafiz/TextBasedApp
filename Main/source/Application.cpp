@@ -4,19 +4,9 @@
 #include <iomanip>
 #include <string>
 
-#include "../helper/CSV_Reader.h"
-#include "../helper/StringHelper.h"
-
 #include "SceneDefault.h"
-#include "../project/SceneMenu.h"
-#include "../project/SceneGame.h"
-#include "../project/SceneLevelSelect.h"
-#include "../project/SceneSettings.h"
-#include "../project/SceneStats.h"
+#include "StringHelper.h"
 
-
-CSV_Reader csv = CSV_Reader::readfile("data/paths.csv");
-int x = 1;
 
 Application::Application() :
 	isRunning(true),
@@ -45,12 +35,8 @@ void Application::init()
 	mouseHandler = MouseHandler::getInstance();
 
 	sceneManager = SceneManager::getInstance();
-	sceneManager->addScene(new SceneMenu(), "Menu");
-	sceneManager->addScene(new SceneGame(), "Game");
-	sceneManager->addScene(new SceneLevelSelect(), "Level Select");
-	sceneManager->addScene(new SceneSettings(), "Settings");
-	sceneManager->addScene(new SceneStats(), "Stats");
-	sceneManager->changeScene("Menu");
+	sceneManager->addScene(new DefaultScene(), "Default");
+	sceneManager->changeScene("Default");
 }
 void Application::mainloop()
 {

@@ -48,6 +48,9 @@
     <ClInclude Include="source\StringHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\SoundClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Console.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\StringHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SoundClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

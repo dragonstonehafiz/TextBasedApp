@@ -29,6 +29,7 @@
     <ClInclude Include="source\SceneDefault.h" />
     <ClInclude Include="source\SceneManager.h" />
     <ClInclude Include="source\SingletonTemplate.h" />
+    <ClInclude Include="source\SoundClass.h" />
     <ClInclude Include="source\StringHelper.h" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +40,7 @@
     <ClCompile Include="source\MouseHandler.cpp" />
     <ClCompile Include="source\SceneDefault.cpp" />
     <ClCompile Include="source\SceneManager.cpp" />
+    <ClCompile Include="source\SoundClass.cpp" />
     <ClCompile Include="source\StringHelper.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -129,6 +131,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Libraries\irrklang\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,6 +147,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Libraries\irrklang\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -7,6 +7,10 @@
 #include "SceneDefault.h"
 #include "StringHelper.h"
 
+#include <irrKlang.h>
+using namespace irrklang;
+
+
 
 Application::Application() :
 	isRunning(true),
@@ -20,6 +24,7 @@ Application::Application() :
 }
 Application::~Application()
 {
+	delete engine;
 }
 
 void Application::init()

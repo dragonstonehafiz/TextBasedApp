@@ -6,6 +6,7 @@
 
 #include "SceneDefault.h"
 #include "StringHelper.h"
+#include "SceneSound.h"
 
 #include <irrKlang.h>
 using namespace irrklang;
@@ -24,7 +25,6 @@ Application::Application() :
 }
 Application::~Application()
 {
-	delete engine;
 }
 
 void Application::init()
@@ -39,9 +39,16 @@ void Application::init()
 	keyboardHandler = KeyboardHandler::getInstance();
 	mouseHandler = MouseHandler::getInstance();
 
+	soundManager = SoundClass::getInstance();
+	soundManager->init();
+	soundManager->createChannel("Ambient");
+	soundManager->createChannel("SFX");
+	soundManager->createChannel("Music");
+
 	sceneManager = SceneManager::getInstance();
 	sceneManager->addScene(new DefaultScene(), "Default");
-	sceneManager->changeScene("Default");
+	sceneManager->addScene(new SceneSound(), "Sound");
+	sceneManager->changeScene("Sound");
 }
 void Application::mainloop()
 {

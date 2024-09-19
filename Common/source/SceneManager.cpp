@@ -21,6 +21,7 @@ bool SceneManager::addScene(BaseScene* toAdd, std::string sceneName)
 		return false;
 
 	sceneMap[sceneName] = toAdd;
+	toAdd->init();
 	return true;
 	
 }

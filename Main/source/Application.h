@@ -6,6 +6,7 @@
 #include "KeyboardHandler.h"
 #include "MouseHandler.h"
 #include "SceneManager.h"
+#include "SoundClass.h"
 #include "SingletonTemplate.h"
 
 class Application
@@ -31,6 +32,7 @@ private:
 	KeyboardHandler* keyboardHandler;
 	MouseHandler* mouseHandler;
 	SceneManager* sceneManager;
+	SoundClass* soundManager;
 
 	bool isRunning;
 	double runTime;

@@ -135,9 +135,11 @@
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\Main.cpp" />
+    <ClCompile Include="source\SceneSound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application.h" />
+    <ClInclude Include="source\SceneSound.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\TextBasedApp.vcxproj">

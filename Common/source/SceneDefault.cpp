@@ -19,7 +19,6 @@ void DefaultScene::init()
 void DefaultScene::update(double dt)
 {
 	totalElapsedTime += dt;
-	counter += 1;
 	if (counter % 60 == 0)
 		seconds_passed += 1;
 
@@ -28,6 +27,10 @@ void DefaultScene::update(double dt)
 		seconds_passed = 0;
 		counter = 0;
 		totalElapsedTime = 0.f;
+	}
+	if (KeyboardHandler::getInstance()->isKeyDown('B'))
+	{
+		counter += 1;
 	}
 }
 void DefaultScene::render()
